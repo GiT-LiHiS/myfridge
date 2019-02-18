@@ -67,22 +67,37 @@ public class FridgeController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(Item item){
 		
-		String message;
 		
-		LocalDate datenow = LocalDate.now();
+		try {
+			
+			String message;
+			
+			LocalDate datenow = LocalDate.now();
+			
+			Period diff = Period.between(datenow,item.getDate());
+			
+			int days = diff.getDays();
+			
+			item.setEday(days);
+			message = "tuote vanhenee " + days+ " päivän päästä!";
+			
+			item.setMessage(message);
+			itemlist.add(item);
+			
+	        itemrepo.save(item);
+	      			
+			
+		}
 		
-		Period diff = Period.between(datenow,item.getDate());
+              catch (Exception ex) {
+			
+			System.out.print(ex.getMessage());
+			
+		}
 		
-		int days = diff.getDays();
+		  return "redirect:itemlist";
+
 		
-		item.setEday(days);
-		message = "tuote vanhenee " + days+ " päivän päästä!";
-		
-		item.setMessage(message);
-		itemlist.add(item);
-		
-        itemrepo.save(item);
-        return "redirect:itemlist";
     }    
 	
 }

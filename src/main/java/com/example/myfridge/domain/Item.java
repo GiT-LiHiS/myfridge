@@ -32,7 +32,7 @@ public class Item {
 	private String quan;
 	public Item () {
 		
-		date = LocalDate.now();
+		
 		
 		
 	
