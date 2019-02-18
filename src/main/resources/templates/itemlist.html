@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>MY FRIDGE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+    		.container {
+    	margin-top: 25px;	
+    	padding-bottom: 25px;
+    	padding-top: 25px;
+    	border-radius: 20px 20px;
+    	 background-color: white;
+	    	
+    	}
+    	
+    	body {
+    	background-image: url("https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Food-vegetables-mushrooms-peppers-tomatoes-spoons-photos-2560x1600-PIC-WPD006575.jpg");
+    	background-repeat: no-repeat;
+    	 background-size: cover;
+			    	
+    	}
+    	
+    	td {
+    	background-color: white;
+	    	}
+	    th {
+	    background-color: white;
+	    
+	    }	
+    
+    </style>
+</head>
+<body>
+	<div class="container">
+	<h1>notifications</h1>
+    <table class="table table-striped">
+    <tbody>
+    <tr>
+    	<th>Name</th>
+    	<th>Message</th>
+    	
+    	
+    	
+  	</tr>
+			<tr th:each ="item : ${alertitems}">
+			
+			<div th:if="${item.eday} &lt; 5">
+			<td th:text="${item.name}"></td>
+			</div>
+			
+			<div th:if="${item.eday} &lt; 5">
+			<td th:text="${item.message}"></td>
+			</div>
+		
+			</tr>	    
+    
+    </tbody>
+    </table>   
+    </div>
+		
+
+
+	<div class="container">
+	<h1>My Fridge!</h1>   
+    <table class="table table-striped">
+    <tbody>
+    <tr>
+    	<th>Name</th>
+    	<th>quantity</th>
+    	
+    	<th>ex. date</th>
+    	<th>Days until ex.</th>
+    	<th>Delete</th>
+    	<th>Update / View</th>
+    	
+    	
+  	</tr>
+			<tr th:each ="item : ${items}">
+			<td th:text="${item.name}"></td>
+			<td th:text="${item.quan}"></td>
+			<td th:text="${item.date}"></td>
+			<td th:text="${item.eday}"></td>
+			<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${item.id})}">Delete</a></td> 
+			<td><a class="btn btn-primary" th:href="@{/edit/{id}(id=${item.id})}">Update/View</a></td> 
+			</tr>	    
+    
+    </tbody>
+    </table>
+    <a class="btn btn-success" href="/add">Add item</a>   
+    </div>
+</body>
+</html>

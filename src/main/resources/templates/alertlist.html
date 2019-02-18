@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>MY FRIDGE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+    		.container {
+    	margin-top: 25px;	
+    	padding-bottom: 25px;
+    	padding-top: 25px;
+    	border-radius: 20px 20px;
+    	 background-color: white;
+	    	
+    	}
+    	
+    	body {
+    	background-image: url("https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Food-vegetables-mushrooms-peppers-tomatoes-spoons-photos-2560x1600-PIC-WPD006575.jpg");
+    	background-repeat: no-repeat;
+    	 background-size: cover;
+			    	
+    	}
+    	
+    	td {
+    	background-color: white;
+	    	}
+	    th {
+	    background-color: white;
+	    
+	    }	
+    
+    </style>
+</head>
+<body>
+
+	<div class="container">
+	<h1>notifications</h1>
+    <table class="table table-striped">
+    <tbody>
+    <tr>
+    	<th>Name</th>
+    	<th>Message</th>
+    	
+    	
+    	
+  	</tr>
+			<tr th:each ="item : ${alertitems}">
+			
+			<div th:if="${item.eday} &lt; 5">
+			<td th:text="${item.name}"></td>
+			</div>
+			
+			<div th:if="${item.eday} &lt; 5">
+			<td th:text="${item.message}"></td>
+			</div>
+		
+			</tr>	    
+    
+    </tbody>
+    </table>   
+    </div>
+		
+
+	
+</body>
+</html>
