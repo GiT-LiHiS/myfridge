@@ -90,9 +90,9 @@ public class FridgeController {
 		}
 		
               catch (Exception ex) {
-			
+            	  LocalDate datenow = LocalDate.now();
 			System.out.print(ex.getMessage());
-			
+			item.setDate(datenow);
 		}
 		
 		  return "redirect:itemlist";
