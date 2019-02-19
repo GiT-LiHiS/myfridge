@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class FridgeController {
 	List<Item> itemlist = new ArrayList<Item>();
+	String message2;
+	LocalDate date2;
+	int edays;
+	
 	@Autowired
 	private ItemRepository itemrepo;
 	@Autowired
@@ -44,7 +49,23 @@ public class FridgeController {
 	
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editItem(@PathVariable("id") Long itemId, Model model ) {
+		
+		
+		message2 = itemrepo.findById(itemId).get().getMessage();
+		
+		date2 = itemrepo.findById(itemId).get().getDate();
+		
+		edays = itemrepo.findById(itemId).get().getEday();
+		
+		
+	
 		model.addAttribute("item",itemrepo.findById(itemId));
+		
+				
+		
+		
+		
+		
 			
 		return "edititem";
 	}
@@ -97,8 +118,9 @@ public class FridgeController {
 	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
     public String saveedit(Item item){
 		
-		
-
+		item.setDate(date2);
+		item.setMessage(message2);
+		item.setEday(edays);
 		
 			
 	        itemrepo.save(item);
