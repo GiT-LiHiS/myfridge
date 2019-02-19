@@ -68,7 +68,7 @@ public class FridgeController {
     public String save(Item item){
 		
 		
-		try {
+
 			
 			String message;
 			
@@ -82,18 +82,28 @@ public class FridgeController {
 			message = "tuote vanhenee " + days+ " päivän päästä!";
 			
 			item.setMessage(message);
-			itemlist.add(item);
+		
 			
 	        itemrepo.save(item);
 	      			
-			
-		}
+	
 		
-              catch (Exception ex) {
-            	 
-			System.out.print(ex.getMessage());
+		  return "redirect:itemlist";
+
+		
+    }    
+	
+	
+	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
+    public String saveedit(Item item){
+		
+		
+
+		
 			
-		}
+	        itemrepo.save(item);
+	      			
+	
 		
 		  return "redirect:itemlist";
 

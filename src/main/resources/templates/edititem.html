@@ -35,7 +35,7 @@
 	
 	<div class="container">
 	<h1>Add item</h1>
-		<form th:object="${item}" th:action="@{../save}" action="#" method="post">
+		<form th:object="${item}" th:action="@{../editsave}" action="#" method="post">
 		<div class="form-group">
 			
 			<input type="hidden" th:field="*{id}" class="form-control"/>
