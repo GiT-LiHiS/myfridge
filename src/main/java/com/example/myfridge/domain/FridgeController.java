@@ -28,7 +28,108 @@ public class FridgeController {
 	@Autowired
 	private AlertRepository alertrepo;
 	
+	@Autowired
+	private SeasoningRepository seasonrepo;
 	
+	
+	
+	@RequestMapping("/seasoninglist")
+	public String seasoningList(Model model) {
+		
+	
+		
+		model.addAttribute("seasonings", seasonrepo.findAll());
+		return "seasoningslist";
+		
+	}
+	
+	@RequestMapping(value = "/addseasoning")
+    public String addSeasoning(Model model){
+    	model.addAttribute("seasoning", new Seasoning());
+        return "addseasoning";
+    }     
+	
+	@RequestMapping(value = "/saveseasoning", method = RequestMethod.POST)
+    public String save(Seasoning seasoning){
+		
+		
+
+			
+			String message;
+			
+			LocalDate datenow = LocalDate.now();
+			
+			Period diff = Period.between(datenow,seasoning.getDate());
+			
+			int days = diff.getDays();
+			
+			seasoning.setEday(days);
+			message = "tuote loppuupian! " + seasoning.getQuan()+ "/10 jäljellä";
+			
+			seasoning.setMessage(message);
+		
+			
+	        seasonrepo.save(seasoning);
+	      			
+	
+		
+		  return "redirect:seasoninglist";
+
+		
+    }    
+	
+	@RequestMapping(value = "/deleteseasoning/{id}", method = RequestMethod.GET)
+    public String deleteSeasoning(@PathVariable("id") Long itemId, Model model) {
+    	seasonrepo.deleteById(itemId);
+  
+    	
+        return "redirect:../seasoninglist";
+    }     
+	
+	
+	
+	
+	@RequestMapping(value = "/editseasoning/{id}", method = RequestMethod.GET)
+	public String editSeasoning(@PathVariable("id") Long itemId, Model model ) {
+		
+		
+		message2 = seasonrepo.findById(itemId).get().getMessage();
+		
+		date2 = seasonrepo.findById(itemId).get().getDate();
+		
+		edays = seasonrepo.findById(itemId).get().getEday();
+		
+		
+	
+		model.addAttribute("seasoning",seasonrepo.findById(itemId));
+		
+				
+		
+		
+		
+		
+			
+		return "editseasoning";
+	}
+	
+	@RequestMapping(value = "/editseasoningsave", method = RequestMethod.POST)
+    public String saveeditseasoning(Seasoning seasoning){
+		
+		seasoning.setDate(date2);
+		seasoning.setMessage(message2);
+		seasoning.setEday(edays);
+		String message = "tuote loppuupian! " + seasoning.getQuan()+ "/10 jäljellä";
+		
+		seasoning.setMessage(message);
+			
+	        seasonrepo.save(seasoning);
+	      			
+	
+		
+		  return "redirect:seasoninglist";
+
+		
+    }    
 	
 	
 	
@@ -69,6 +170,15 @@ public class FridgeController {
 			
 		return "edititem";
 	}
+	
+	
+
+	
+	
+	
+	
+	
+	
 	
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)

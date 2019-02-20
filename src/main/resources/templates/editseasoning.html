@@ -34,8 +34,8 @@
 <body>
 	
 	<div class="container">
-	<h1>Edit item</h1>
-		<form th:object="${item}" th:action="@{../editsave}" action="#" method="post">
+	<h1>Edit seasoning</h1>
+		<form th:object="${seasoning}" th:action="@{../editseasoningsave}" action="#" method="post">
 		<div class="form-group">
 			
 			<input type="hidden" th:field="*{id}" class="form-control"/>
@@ -46,7 +46,7 @@
 			
 			 
 				<label for="quan">quantity</label>
-			<input class="form-control" type="text" id="quan" th:field="*{quan}" />
+			<input class="form-control" type="number" id="quan" th:field="*{quan}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
 			
@@ -61,6 +61,8 @@
 			<label for="comment">comment</label>
 			<input class="form-control" type="text" id="comment" th:field="*{comment}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			
 			
 			
 		

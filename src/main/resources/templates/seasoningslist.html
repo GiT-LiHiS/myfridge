@@ -10,28 +10,27 @@
     	padding-bottom: 25px;
     	padding-top: 25px;
     	border-radius: 20px 20px;
-    	 background-color: #edffeb;
-    	 
+    	 background-color: #fff9e7;
+    	
 	    	
     	}
     	
     	body {
-    	background-image: url("https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Food-vegetables-mushrooms-peppers-tomatoes-spoons-photos-2560x1600-PIC-WPD006575.jpg");
+    	background-image: url("http://s1.1zoom.me/b5050/82/Geography_Spices_Design_541758_3840x2400.jpg");
     	background-repeat: no-repeat;
     	 background-size: cover;
 			    	
     	}
     	
     	td {
-     background-color: #edffeb;
+   background-color: #fff9e7;
+    	
 	    	}
 	    th {
- background-color: #edffeb;
+	   background-color: #fff9e7;
+    	
 	    
 	    }	
-	    
-	    
-	    
     
     </style>
 </head>
@@ -67,7 +66,8 @@
   </div>
 </nav>
 
-	<div class="container">
+
+<div class="container">
 	<h1>notifications</h1>
     <table class="table table-striped">
     <tbody>
@@ -78,14 +78,14 @@
     	
     	
   	</tr>
-			<tr th:each ="item : ${alertitems}">
+			<tr th:each ="seasoning : ${seasonings}">
 			
-			<div th:if="${item.eday} &lt; 5">
-			<td th:text="${item.name}"></td>
+			<div th:if="${seasoning.quan} &lt; 4">
+			<td th:text="${seasoning.name}"></td>
 			</div>
 			
-			<div th:if="${item.eday} &lt; 5">
-			<td th:text="${item.message}"></td>
+			<div th:if="${seasoning.quan} &lt; 4">
+			<td th:text="${seasoning.message}"></td>
 			</div>
 		
 			</tr>	    
@@ -93,16 +93,21 @@
     </tbody>
     </table>   
     </div>
-		
+
+
+
+
+	
+
 
 
 	<div class="container">
-	<h1>My Fridge</h1>   
+	<h1>My seasonings</h1>   
     <table class="table table-striped">
     <tbody>
     <tr>
     	<th>Name</th>
-    	<th>quantity</th>
+    	<th>quantity /10</th>
     	
     	<th>ex. date</th>
     	<th>Days until ex.</th>
@@ -111,18 +116,18 @@
     	
     	
   	</tr>
-			<tr th:each ="item : ${items}">
-			<td th:text="${item.name}"></td>
-			<td th:text="${item.quan}"></td>
-			<td th:text="${item.date}"></td>
-			<td th:text="${item.eday}"></td>
-			<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${item.id})}">Delete</a></td> 
-			<td><a class="btn btn-primary" th:href="@{/edit/{id}(id=${item.id})}">Update/View</a></td> 
+			<tr th:each ="seasoning : ${seasonings}">
+			<td th:text="${seasoning.name}"></td>
+			<td th:text="${seasoning.quan}"   ></td>
+			<td th:text="${seasoning.date}"></td>
+			<td th:text="${seasoning.eday}"></td>
+			<td><a class="btn btn-danger" th:href="@{/deleteseasoning/{id}(id=${seasoning.id})}">Delete</a></td> 
+			<td><a class="btn btn-primary" th:href="@{/editseasoning/{id}(id=${seasoning.id})}">Update/View</a></td> 
 			</tr>	    
     
     </tbody>
     </table>
-    <a class="btn btn-success" href="/add">Add item</a>   
+    <a class="btn btn-success" href="/addseasoning">Add item</a>   
     </div>
 </body>
 </html>

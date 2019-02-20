@@ -34,28 +34,22 @@
 <body>
 	
 	<div class="container">
-	<h1>Edit item</h1>
-		<form th:object="${item}" th:action="@{../editsave}" action="#" method="post">
+	<h1>Add seasoning</h1>
+		<form th:object="${seasoning}" th:action="@{saveseasoning}" action="#" method="post">
 		<div class="form-group">
-			
-			<input type="hidden" th:field="*{id}" class="form-control"/>
-			
-		  	<label for="name">name</label>
-			<input class="form-control" type="text" id="name" th:field="*{name}" />
+		
+		        <label for="validationDefault01">name</label>
+			<input class="form-control" type="text" id="validationDefault01" th:field="*{name}" required>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
-			 
 				<label for="quan">quantity</label>
-			<input class="form-control" type="text" id="quan" th:field="*{quan}" />
+			<input class="form-control" type="number" min="1" max="10" id="quan" th:field="*{quan}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
 			
 			
-			
-			
-			
-			<label for="eday">days till ex</label>
-			<input class="form-control" type="number" id="eday" th:field="*{eday}" disabled />
+			<label for="date">date</label>
+			<input class="form-control" type="date" id="validationDefault01" th:value="*{date}" th:field="*{date}" required>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
 			<label for="comment">comment</label>
@@ -63,8 +57,12 @@
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
 			
+			
+			
+			
 		
 			</div>
+			
 			
 			<input class="btn btn-success" type="submit" value="Save"/>
             
