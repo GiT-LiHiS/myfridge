@@ -68,33 +68,6 @@
 </nav>
 
 
-<div class="container">
-	<h1>notifications</h1>
-    <table class="table table-striped">
-    <tbody>
-    <tr>
-    	<th>Name</th>
-    	<th>Message</th>
-    	
-    	
-    	
-  	</tr>
-			<tr th:each ="seasoning : ${seasonings}">
-			
-			<div th:if="${seasoning.quan} &lt; 4 and ${seasoning.emonth} &lt; 1 ">
-			<td th:text="${seasoning.name}"></td>
-			</div>
-			
-			<div th:if="${seasoning.quan} &lt; 4">
-			<td th:text="${seasoning.message}"></td>
-			</div>
-		
-			</tr>	    
-    
-    </tbody>
-    </table>   
-    </div>
-
 
 
 
@@ -103,32 +76,28 @@
 
 
 	<div class="container">
-	<h1>My seasonings</h1>   
+	<h1>tools and utilities</h1>   
     <table class="table table-striped">
     <tbody>
     <tr>
     	<th>Name</th>
     	<th>quantity /10</th>
     	
-    	<th>ex. date</th>
-    	<th>Days until ex.</th>
-    	<th>Delete</th>
-    	<th>Update / View</th>
+    	
     	
     	
   	</tr>
-			<tr th:each ="seasoning : ${seasonings}">
-			<td th:text="${seasoning.name}"></td>
-			<td th:text="${seasoning.quan}"   ></td>
-			<td th:text="${seasoning.date}"></td>
-			<td th:text="${seasoning.emessage}"></td>
-			<td><a class="btn btn-danger" th:href="@{/deleteseasoning/{id}(id=${seasoning.id})}">Delete</a></td> 
-			<td><a class="btn btn-primary" th:href="@{/editseasoning/{id}(id=${seasoning.id})}">Update/View</a></td> 
+			<tr th:each ="utily : ${utilys}">
+			<td th:text="${utily.name}"></td>
+			<td th:text="${utily.quan}"   ></td>
+			<td><a class="btn btn-danger" th:href="@{/deleteutility/{id}(id=${utily.id})}">Delete</a></td> 
+			<td><a class="btn btn-primary" th:href="@{/editutility/{id}(id=${utily.id})}">Update/View</a></td> 
+			
 			</tr>	    
     
     </tbody>
     </table>
-    <a class="btn btn-success" href="/addseasoning">Add item</a>   
+    <a class="btn btn-success" href="/addutility">Add item</a>   
     </div>
 </body>
 </html>

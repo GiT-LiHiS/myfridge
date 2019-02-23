@@ -28,6 +28,9 @@ public class Item {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate date;
 	private int eday;
+	private int emonth;
+	private int eyear;
+	private String emessage;
 	private String message;
 	private String quan;
 	public Item () {
@@ -53,6 +56,24 @@ public class Item {
    
    
 
+public int getEmonth() {
+	return emonth;
+}
+public void setEmonth(int emonth) {
+	this.emonth = emonth;
+}
+public int getEyear() {
+	return eyear;
+}
+public void setEyear(int eyear) {
+	this.eyear = eyear;
+}
+public String getEmessage() {
+	return emessage;
+}
+public void setEmessage(String emessage) {
+	this.emessage = emessage;
+}
 public String getQuan() {
 	return quan;
 }

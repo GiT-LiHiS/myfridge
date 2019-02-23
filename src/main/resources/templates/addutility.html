@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>book</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+    	.container {
+    	margin-top: 25px;	
+    	padding-bottom: 25px;
+    	padding-top: 25px;
+    	border-radius: 20px 20px;
+    	 background-color: white;
+	    	
+    	}
+    	
+    	body {
+    	background-image: url("https://stmed.net/sites/default/files/book-wallpapers-28442-7602008.jpg");
+    	background-repeat: no-repeat;
+    	 background-size: cover;
+			    	
+    	}
+    	
+    	td {
+    	background-color: white;
+	    	}
+	    th {
+	    background-color: white;
+	    
+	    }	
+    
+    </style>
+</head>
+<body>
+	
+	<div class="container">
+	<h1>Add tool or utility</h1>
+		<form th:object="${utility}" th:action="@{saveutility}" action="#" method="post">
+		<div class="form-group">
+		
+		        <label for="validationDefault01">name</label>
+			<input class="form-control" type="text" id="validationDefault01" th:field="*{name}" required>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+				<label for="quan">quantity</label>
+			<input class="form-control" type="number" min="1" max="10" id="quan" th:field="*{quan}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		
+			
+			<label for="comment">comment</label>
+			<input class="form-control" type="text" id="comment" th:field="*{comments}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			
+			
+			
+			
+		
+			</div>
+			
+			
+			<input class="btn btn-success" type="submit" value="Save"/>
+            
+		</form>
+	</div>
+
+	
+
+</body>
+</html>

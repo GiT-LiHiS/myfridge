@@ -10,23 +10,23 @@
     	padding-bottom: 25px;
     	padding-top: 25px;
     	border-radius: 20px 20px;
-    	 background-color: #edffeb;
+    	 background-color: #f5f0e1;
     	 
 	    	
     	}
     	
     	body {
-    	background-image: url("https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Food-vegetables-mushrooms-peppers-tomatoes-spoons-photos-2560x1600-PIC-WPD006575.jpg");
+    	background-image: url("https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
     	background-repeat: no-repeat;
     	 background-size: cover;
 			    	
     	}
     	
     	td {
-     background-color: #edffeb;
+    	 background-color: #f5f0e1;
 	    	}
 	    th {
- background-color: #edffeb;
+ 	 background-color: #f5f0e1;
 	    
 	    }	
 	    
@@ -78,7 +78,7 @@
     	
     	
   	</tr>
-			<tr th:each ="item : ${alertitems}">
+			<tr th:each ="item : ${items}">
 			
 			<div th:if="${item.eday} &lt; 5">
 			<td th:text="${item.name}"></td>
@@ -115,7 +115,7 @@
 			<td th:text="${item.name}"></td>
 			<td th:text="${item.quan}"></td>
 			<td th:text="${item.date}"></td>
-			<td th:text="${item.eday}"></td>
+			<td th:text="${item.emessage}"></td>
 			<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${item.id})}">Delete</a></td> 
 			<td><a class="btn btn-primary" th:href="@{/edit/{id}(id=${item.id})}">Update/View</a></td> 
 			</tr>	    
