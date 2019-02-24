@@ -1,43 +1,93 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>MY FRIDGE</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <style>
+     <style>
     		.container {
     	margin-top: 25px;	
     	padding-bottom: 25px;
     	padding-top: 25px;
-    	border-radius: 20px 20px;
-    	 background-color: #fffef9;
-                
-    	
+    	border-radius: 10px 10px;
+    		 background-color: #ffffff;
+    	 
 	    	
     	}
     	
     	body {
-    	background-image: url("https://images.pexels.com/photos/461428/pexels-photo-461428.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    	background-image: url("https://images.pexels.com/photos/461428/pexels-photo-461428.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" );
     	background-repeat: no-repeat;
     	 background-size: cover;
-	background-attachment: fixed;
+    	 background-attachment: fixed;
+         
+			    	
     	}
     	
     	td {
-  	 background-color: #fffef9;
-            	
-    	
+    	 	 background-color: #ffffff;
 	    	}
 	    th {
-		 background-color: #fffef9;
-    	
+ 		 background-color: #ffffff;
+	    
 	    }	
+	    
+	    table {
+  table-layout: fixed;
+}
+	    /* Extra small devices (phones, up to 480px) */
+@media screen and (max-width: 767px) {
+    
+      table {
+  table-layout: fixed;
+          font-size: 3vw;
+}
+    .btn-sm {
+        
+        font-size: 2vw;
+        
+    }
+
+}
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+      table {
+  table-layout: fixed;
+          font-size: 3vw;
+}
+    .btn-sm {
+        
+        font-size: 3vw;
+        
+    }
+
+}
+/* tablets/desktops and up ----------- */
+@media (min-width: 992px) and (max-width: 1199px) {
+      table {
+  table-layout: fixed;
+          font-size: 3vw;
+}
+    .btn-sm {
+        
+        font-size: 2vw;
+        
+    }
+
+}
+/* large desktops and up ----------- */
+@media screen and (min-width: 1200px) {
+  
+}
+
+}
     
     </style>
 </head>
 <body>
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/itemlist">Menu</a>
+  <a class="navbar-brand" href="/seasoninglist">Seasonings</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -47,9 +97,7 @@
        <li class="nav-item active">
         <a class="nav-link" href="/itemlist">fridge<span class="sr-only">(current)</span></a>
       </li>
-       <li class="nav-item active">
-        <a class="nav-link" href="/seasoninglist">seasonings<span class="sr-only">(current)</span></a>
-      </li>
+     
         <li class="nav-item active">
         <a class="nav-link" href="/utilylist">utilities / tools<span class="sr-only">(current)</span></a>
       </li>
@@ -93,7 +141,7 @@
 
 
 	<div class="container">
-	<h1>My seasonings</h1>   
+	
     <table class="table table-striped">
     <tbody>
     <tr>
@@ -112,8 +160,8 @@
 			<td th:text="${seasoning.quan}"   ></td>
 			<td th:text="${seasoning.date}"></td>
 			
-			<td><a class="btn btn-danger" th:href="@{/deleteseasoning/{id}(id=${seasoning.id})}">Delete</a></td> 
-			<td><a class="btn btn-primary" th:href="@{/editseasoning/{id}(id=${seasoning.id})}">Update/View</a></td> 
+			<td><a class="btn btn-danger btn-sm" th:href="@{/deleteseasoning/{id}(id=${seasoning.id})}">Delete</a></td> 
+			<td><a class="btn btn-primary btn-sm" th:href="@{/editseasoning/{id}(id=${seasoning.id})}">Update/View</a></td> 
 			</tr>	    
     
     </tbody>

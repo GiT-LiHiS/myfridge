@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>MY FRIDGE</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -13,7 +13,7 @@
     	padding-bottom: 25px;
     	padding-top: 25px;
     	border-radius: 10px 10px;
-    	 background-color: #fffef9;
+    	 background-color: #ffffff;
     	 
 	    	
     	}
@@ -28,10 +28,10 @@
     	}
     	
     	td {
-    	 background-color: #fffef9;
+    		 background-color: #ffffff;
 	    	}
 	    th {
- 	 background-color: #fffef9;
+ 		 background-color: #ffffff;
 	    
 	    }	
 	    
@@ -89,16 +89,14 @@
 </head>
 <body>
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/itemlist">Menu</a>
+  <a class="navbar-brand" href="/itemlist">Fridge</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/itemlist">fridge<span class="sr-only">(current)</span></a>
-      </li>
+    
        <li class="nav-item active">
         <a class="nav-link" href="/seasoninglist">seasonings<span class="sr-only">(current)</span></a>
       </li>
@@ -112,9 +110,7 @@
   </div>
 </nav>
 
-	<div class="container">
-	<h1>My Fridge</h1>   
-	</div>
+	
 
 	<div class="container">
 	<h1>notifications</h1>
@@ -144,6 +140,7 @@
     </div>
 		
 	<div class="container">
+        <h1>Item list</h1>   
     <table class="table">
     <tbody>
     <tr>
