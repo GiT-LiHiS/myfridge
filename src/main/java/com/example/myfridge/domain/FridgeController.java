@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class FridgeController {
+	
+	
 	List<Item> itemlist = new ArrayList<Item>();
 	String message2;
 	String emessage;
@@ -29,6 +31,8 @@ public class FridgeController {
 	LocalDate date2;
 	int edays;
 	
+	
+	//autowire repositorys for use
 	@Autowired
 	private ItemRepository itemrepo;
 	@Autowired
@@ -43,6 +47,8 @@ public class FridgeController {
 	
 	//TOOLS AND UTILITIES
 	
+	
+	//utilities and tools main page
 	@RequestMapping("/utilylist")
 	public String utilyList(Model model) {
 		
@@ -53,16 +59,20 @@ public class FridgeController {
 	
 	}
 	
+	
+	//gets user date from user input on thymeleaf
 	@RequestMapping(value = "/addutility")
     public String addUtility(Model model){
     	model.addAttribute("utility", new Utily());
         return "addutility";
     }     
 	
+	//save utility to repository
 	@RequestMapping(value = "/saveutility", method = RequestMethod.POST)
     public String save(Utily utily){
 		
-			String emessage;
+		
+			//set message that is shown on notification 
 			String message;
 	
 			message = "tuote loppuupian! " + utily.getQuan()+ "/10 jäljellä";
@@ -75,6 +85,8 @@ public class FridgeController {
 
     }   
 	
+	
+	//delete utility using entity id
 	@RequestMapping(value = "/deleteutility/{id}", method = RequestMethod.GET)
     public String deleteUtility(@PathVariable("id") Long itemId, Model model) {
 		
@@ -85,12 +97,12 @@ public class FridgeController {
         return "redirect:../utilylist";
     }   
 	
+	//edit utility using entity id
 	@RequestMapping(value = "/editutility/{id}", method = RequestMethod.GET)
 	public String editUtility(@PathVariable("id") Long itemId, Model model ) {
 		
 		
-		message2 = utilyrepo.findById(itemId).get().getMessage();
-	
+		
 	
 		model.addAttribute("utility",utilyrepo.findById(itemId));
 		
@@ -99,11 +111,12 @@ public class FridgeController {
 		return "editutily";
 	}
 	
+	//save edited utility
 	@RequestMapping(value = "/editutilitysave", method = RequestMethod.POST)
     public String saveeditutility(Utily utily){
 		
 		
-		
+		//generate and set new message for notification based on entitys quanitity
 		String message = "tuote loppuupian! " + utily.getQuan()+ "/10 jäljellä";
 		
 		utily.setMessage(message);
@@ -134,7 +147,7 @@ public class FridgeController {
 	
 	//SEASONINGS
 	
-	
+	//main seasoning page with seasoning list
 	@RequestMapping("/seasoninglist")
 	public String seasoningList(Model model) {
 		
@@ -148,15 +161,21 @@ public class FridgeController {
 		
 	}
 	
+	//get user input for date from thymeleaf page
 	@RequestMapping(value = "/addseasoning")
     public String addSeasoning(Model model){
     	model.addAttribute("seasoning", new Seasoning());
         return "addseasoning";
     }     
 	
+	//save seasoning using user inputed data
 	@RequestMapping(value = "/saveseasoning", method = RequestMethod.POST)
     public String save(Seasoning seasoning){
 		
+		//seasoning ex date message disable on thymeleaf atm
+		//Calculate days between now and expiration
+		//set message with expiration day
+
 		String emessage;
 
 			
@@ -193,6 +212,7 @@ public class FridgeController {
 		
     }    
 	
+	//delete seasoning using entity id
 	@RequestMapping(value = "/deleteseasoning/{id}", method = RequestMethod.GET)
     public String deleteSeasoning(@PathVariable("id") Long itemId, Model model) {
     	seasonrepo.deleteById(itemId);
@@ -203,11 +223,13 @@ public class FridgeController {
 	
 	
 	
-	
+	//edit seasoning using entity id
 	@RequestMapping(value = "/editseasoning/{id}", method = RequestMethod.GET)
 	public String editSeasoning(@PathVariable("id") Long itemId, Model model ) {
 		
 		
+		//save messages and expiration days from unedited entity
+		//expiration date cannot be changed
 		message2 = seasonrepo.findById(itemId).get().getMessage();
 		emessage = seasonrepo.findById(itemId).get().getEmessage();
 		date2 = seasonrepo.findById(itemId).get().getDate();
@@ -227,9 +249,11 @@ public class FridgeController {
 		return "editseasoning";
 	}
 	
+	//save editet entity
 	@RequestMapping(value = "/editseasoningsave", method = RequestMethod.POST)
     public String saveeditseasoning(Seasoning seasoning){
 		
+		//set edited entitys expiration date and message with unedited data
 		seasoning.setDate(date2);
 		seasoning.setMessage(message2);
 		seasoning.setEday(edays);
@@ -253,7 +277,7 @@ public class FridgeController {
 	
 	//ITEMS
 	
-	
+	//main page for fridge items
 	@RequestMapping("/itemlist")
 	public String itemList(Model model) {
 		
@@ -269,7 +293,10 @@ public class FridgeController {
 	
 		
 		
-		
+		//calculate days between current date and expiration date every time user enters main fridge page
+		//itemlist contains same entitys that itemrepository has
+		//iterate itemlist and updates the days to expiration
+		//save updated entity to repositor 
 		
 		int i = 0;
 		
