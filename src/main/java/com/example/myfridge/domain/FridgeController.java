@@ -14,8 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-	
 
 @Controller
 public class FridgeController {
@@ -44,10 +44,22 @@ public class FridgeController {
 	private SeasoningRepository seasonrepo;
 	
 	
-	
+	//LOGIN CONTROLLER
+
+	@RequestMapping(value="/login")
+	public String login() {
+		return "login";
+	}
 	//TOOLS AND UTILITIES
 	
-	
+
+	@RequestMapping(value="utilities",method = RequestMethod.GET)
+	public @ResponseBody List<Utily> utilylistRest(){
+
+		return (List<Utily>) utilyrepo.findAll();
+
+	}
+
 	//utilities and tools main page
 	@RequestMapping("/utilylist")
 	public String utilyList(Model model) {
