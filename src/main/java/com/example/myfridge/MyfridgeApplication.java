@@ -24,7 +24,10 @@ public class MyfridgeApplication {
 		return (args) -> {
 
 		//test
-         
+			User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
+
+			urepo.save(user2);
+
 		};
 		
 		
