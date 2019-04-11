@@ -151,11 +151,11 @@ body {
   	</tr>
 			<tr th:each ="item : ${items}">
 			
-			<div th:if="${item.eday} &lt; 5">
+			<div th:if="${item.eday} &lt; 5 and ${item.emonth} &lt; 1 ">
 			<td th:text="${item.name}"></td>
 			</div>
 			
-			<div th:if="${item.eday} &lt; 5">
+			<div th:if="${item.eday} &lt; 5 and ${item.emonth} &lt; 1">
 			<td th:text="${item.message}"></td>
 			</div>
 		
