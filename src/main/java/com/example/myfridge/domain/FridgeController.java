@@ -380,11 +380,12 @@ public class FridgeController {
 	
 	
 	
-	
+	//delete item with using items id
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteItem(@PathVariable("id") Long itemId, Model model) {
     	itemrepo.deleteById(itemId);
-    		
+    	
+    	//because we need track items dates we need to update the list also
     	int i = 0;
     	
     	while ( i < itemlist.size()) {
@@ -406,11 +407,17 @@ public class FridgeController {
         return "redirect:../itemlist";
     }     
 	
+	//add item
+	
 	@RequestMapping(value = "/add")
     public String addITem(Model model){
     	model.addAttribute("item", new Item());
         return "additem";
     }     
+	
+	
+	// save added item to repository
+	//because we need track item dates we need to update the list also
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(Item item){
@@ -450,6 +457,8 @@ public class FridgeController {
 		
     }    
 	
+	//update item
+	//because we need track item dates we need to update the list also
 	
 	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
     public String saveedit(Item item){
