@@ -386,9 +386,11 @@ public class FridgeController {
     	itemrepo.deleteById(itemId);
     	
     	//because we need track items dates we need to update the list also
+    	
     	int i = 0;
     	
     	while ( i < itemlist.size()) {
+    		//if item id's match delete it from the list
     		
     		if ( itemlist.get(i).getId() == itemId) {
     			
